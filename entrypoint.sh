@@ -41,7 +41,7 @@ mkdir -p ${DIRECTORY}
 
 # COPY FILES
 echo "copy files"
-rsync -a ${SOURCE_REPOSITORY}/* ./${DIRECTORY}
+rsync -a ${SOURCE_REPOSITORY}/ ./${DIRECTORY}
 
 echo "create commit"
 git add -A
