@@ -38,15 +38,8 @@ echo "create target folder if not exist"
 mkdir -p ${DIRECTORY}
 
 # COPY FILES
-echo "create rsync exclude option"
-_EXCLUDE_OPTION="--exclude .git"
-for i in ${IGNORE//,/ }
-do
-    _EXCLUDE_OPTION="${_EXCLUDE_OPTION} --exclude $i"
-done
-
 echo "copy files"
-rsync -a ${_EXCLUDE_OPTION} ${SOURCE_REPOSITORY}/* ./${DIRECTORY}
+rsync -a ${SOURCE_REPOSITORY}/* ./${DIRECTORY}
 
 echo "create commit"
 git add -A
