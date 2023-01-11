@@ -25,11 +25,11 @@ inputs:
     description: 'A list of files to be ignored as a comma-separated string (default: "")'
     required: false
     default: ''
-   user_email:
+  user_email:
     description: 'Email address to associate this commit with'
     required: false
     default: 'someone@somewhere'
-   user_name:
+  user_name:
     description: 'Name to associate this commit with'
     required: false
     default: 'someone'
