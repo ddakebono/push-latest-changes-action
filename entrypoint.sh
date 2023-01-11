@@ -6,6 +6,8 @@ BRANCH=$3
 FORCE=$4
 DIRECTORY=$5
 IGNORE=$6
+USEREMAIL=$7
+USERNAME=$8
 
 echo "setup git options";
 _GIT_OPTION=""
@@ -23,8 +25,8 @@ cd ..
 # SETUP TARGET REPOSITORY
 echo "setup git config"
 git config --global credential.helper store
-git config --global user.email "${user_email}"
-git config --global user.name "${user_name}"
+git config --global user.email "${USEREMAIL}"
+git config --global user.name "${USERNAME}"
 
 echo "clone target repository"
 git clone "https://${GITHUB_REPOSITORY_OWNER}:${TOKEN}@github.com/${GITHUB_REPOSITORY_OWNER}/${REPOSITORY}.git"
