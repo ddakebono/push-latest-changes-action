@@ -44,7 +44,7 @@ echo "copy files"
 rsync -a ${SOURCE_REPOSITORY}/ ./${DIRECTORY}
 
 echo "create commit"
-git add -A
+git add -u :/
 git commit -m "Latest changes from ${GITHUB_REPOSITORY} from ${BRANCH} branch"
 
 echo "push to repository"
