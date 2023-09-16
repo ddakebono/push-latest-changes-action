@@ -47,11 +47,10 @@ rsync -a ${_EXCLUDE_OPTION} ${SOURCE_REPOSITORY}/* ./${REPOSITORY}
 
 cd ${REPOSITORY}
 
-mkdir ManagedButtplugIo
-mkdir Yggdrasil
-mkdir MessagePack-CSharp
-
 echo "Correcting missing submodules"
+git rm --cached ManagedButtplugIo
+git rm --cached Yggdrasil
+git rm --cached MessagePack-CSharp
 git submodule add https://github.com/Er1807/ManagedButtplugIo.git
 git submodule add https://github.com/TotallyWholesome/Yggdrasil.git
 git submodule add https://github.com/TotallyWholesome/MessagePack-CSharp.git
