@@ -34,8 +34,16 @@ git clone "https://${GITHUB_REPOSITORY_OWNER}:${TOKEN}@github.com/${GITHUB_REPOS
 echo "Clear existing data in repo to replace with updated content"
 rm -r ${REPOSITORY}/*
 
+# COPY FILES
+echo "create rsync exclude option"
+_EXCLUDE_OPTION="--exclude .git"
+for i in ${IGNORE//,/ }
+do
+    _EXCLUDE_OPTION="${_EXCLUDE_OPTION} --exclude $i"
+done
+
 echo "copy files"
-cp -r ${SOURCE_REPOSITORY}/ ./${REPOSITORY}
+rsync -a ${_EXCLUDE_OPTION} ${SOURCE_REPOSITORY}/* ./${DIRECTORY}
 
 cd ${REPOSITORY}
 
