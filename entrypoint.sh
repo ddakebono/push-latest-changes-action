@@ -43,7 +43,7 @@ do
 done
 
 echo "copy files"
-rsync -a ${_EXCLUDE_OPTION} ${SOURCE_REPOSITORY}/* ./${DIRECTORY}
+rsync -a ${_EXCLUDE_OPTION} ${SOURCE_REPOSITORY}/* ./${REPOSITORY}
 
 cd ${REPOSITORY}
 
