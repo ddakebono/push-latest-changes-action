@@ -57,6 +57,7 @@ git submodule add https://github.com/TotallyWholesome/Yggdrasil.git
 git submodule add https://github.com/TotallyWholesome/MessagePack-CSharp.git
 
 echo "create commit"
+git add -A
 git add -u :/
 git commit -m "Latest changes from ${GITHUB_REPOSITORY} from ${BRANCH} branch"
 
