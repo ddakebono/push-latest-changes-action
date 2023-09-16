@@ -30,21 +30,22 @@ git config --global user.name "${USERNAME}"
 
 echo "clone target repository"
 git clone "https://${GITHUB_REPOSITORY_OWNER}:${TOKEN}@github.com/${GITHUB_REPOSITORY_OWNER}/${REPOSITORY}.git"
-cd ${REPOSITORY}
-
-echo "get latest changes and change branches"
-git fetch origin
-git checkout -b ${BRANCH}
-
-echo "create target folder if not exist"
-mkdir -p ${DIRECTORY}
 
 echo "Clear existing data in repo to replace with updated content"
-rm -r ${DIRECTORY}/*
+rm -r ${REPOSITORY}/*
 
 # COPY FILES
+echo "create rsync exclude option"
+_EXCLUDE_OPTION="--exclude .git"
+for i in ${IGNORE//,/ }
+do
+    _EXCLUDE_OPTION="${_EXCLUDE_OPTION} --exclude $i"
+done
+
 echo "copy files"
-rsync -a ${SOURCE_REPOSITORY}/ ./${DIRECTORY}
+rsync -a ${_EXCLUDE_OPTION} ${SOURCE_REPOSITORY}/* ./${REPOSITORY}
+
+cd ${REPOSITORY}
 
 echo "Correcting missing submodules"
 git submodule add https://github.com/Er1807/ManagedButtplugIo.git
