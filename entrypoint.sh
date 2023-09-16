@@ -39,9 +39,17 @@ git checkout -b ${BRANCH}
 echo "create target folder if not exist"
 mkdir -p ${DIRECTORY}
 
+echo "Clear existing data in repo to replace with updated content"
+rm -r ${DIRECTORY}/*
+
 # COPY FILES
 echo "copy files"
 rsync -a ${SOURCE_REPOSITORY}/ ./${DIRECTORY}
+
+echo "Correcting missing submodules"
+git submodule add https://github.com/Er1807/ManagedButtplugIo.git
+git submodule add https://github.com/TotallyWholesome/Yggdrasil.git
+git submodule add https://github.com/TotallyWholesome/MessagePack-CSharp.git
 
 echo "create commit"
 git add -u :/
