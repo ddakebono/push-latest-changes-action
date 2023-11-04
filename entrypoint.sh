@@ -23,7 +23,7 @@ SOURCE_REPOSITORY=$PWD
 echo "switch to parent directory"
 cd ..
 
-echo "Switch to target source dir
+echo "Switch to target source dir"
 cd ${SOURCEDIR}
 
 # SETUP TARGET REPOSITORY
