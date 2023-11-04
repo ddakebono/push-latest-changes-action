@@ -8,6 +8,7 @@ DIRECTORY=$5
 IGNORE=$6
 USEREMAIL=$7
 USERNAME=$8
+SOURCEDIR=$9
 
 echo "setup git options";
 _GIT_OPTION=""
@@ -21,6 +22,9 @@ SOURCE_REPOSITORY=$PWD
 
 echo "switch to parent directory"
 cd ..
+
+echo "Switch to target source dir
+cd ${SOURCEDIR}
 
 # SETUP TARGET REPOSITORY
 echo "setup git config"
@@ -46,14 +50,6 @@ echo "copy files"
 rsync -a ${_EXCLUDE_OPTION} ${SOURCE_REPOSITORY}/* ./${REPOSITORY}
 
 cd ${REPOSITORY}
-
-echo "Correcting missing submodules"
-git rm --cached ManagedButtplugIo
-git rm --cached Yggdrasil
-git rm --cached MessagePack-CSharp
-git submodule add https://github.com/Er1807/ManagedButtplugIo.git
-git submodule add https://github.com/TotallyWholesome/Yggdrasil.git
-git submodule add https://github.com/TotallyWholesome/MessagePack-CSharp.git
 
 echo "create commit"
 git add -A
