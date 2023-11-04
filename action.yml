@@ -17,6 +17,10 @@ inputs:
     description: 'Enable force push (default: false)'
     required: false
     default: false
+  sourcedir:
+    description: 'Directory containing the target files to push'
+    required: false
+    default: '.'
   directory:
     description: 'Directory to push changes to (default: ".")'
     required: false
@@ -45,6 +49,7 @@ runs:
     - ${{ inputs.ignore }}
     - ${{ inputs.user_email }}
     - ${{ inputs.user_name }}
+    - ${{ inputs.sourcedir }}
 branding:
   icon: 'git-commit'
   color: 'green'
